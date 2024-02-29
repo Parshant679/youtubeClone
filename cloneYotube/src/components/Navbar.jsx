@@ -5,9 +5,28 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FaMicrophone } from "react-icons/fa";
 import { RiVideoAddLine } from "react-icons/ri";
 import { BsBell } from "react-icons/bs";
-
-
+import { useAppDispatch, useAppSelector } from "../../src/hooks/useApp";
+import {
+  clearVideos,
+  changeSearchTerm,
+  clearSearchTerm,
+} from "../feature/youtubeApi/youtubeApiSlice";
+import { getSearchPageVideos } from "../Store/reducers/getSearchPageVideos";
+import { useLocation, useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const serchTerm = useAppSelector((state) => state.youtubeApp.serchTerm);
+  const handleSearch = () => {
+    if (location.pathname !== "/search") {
+      navigate("/search");
+    } else {
+      dispatch(clearVideos);
+      dispatch(getSearchPageVideos(false));
+    }
+  };
   return (
     <div className="flex justify-between items-center px-14 h-14  bg-[#212121] opacity-95 sticky top-0 z-50">
       <div className="flex gap-8 items-center text-2xl">
@@ -21,6 +40,10 @@ export default function Navbar() {
       </div>
       <div className="flex items-center justify-center gap-5">
         <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch();
+          }}
         >
           <div className="flex bg-zinc-900 items-center h-10 px-4 pr-0 rounded-3xl">
             <div className="flex gap-5 items-center pr-5">
@@ -28,6 +51,8 @@ export default function Navbar() {
                 type="text"
                 placeholder="Search"
                 className="w-96 bg-zinc-900 focus:outline-none border-none"
+                value={serchTerm}
+                onChange={(e) => dispatch(changeSearchTerm(e.target.value))}
               />
             </div>
             <button className="h-10 w-16 flex items-center justify-center bg-zinc-800 rounded-r-3xl">
