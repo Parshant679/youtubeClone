@@ -1,7 +1,6 @@
 # youtubeClone
      Created the Youtube Clone (Front End only)  used React and Redux .
-# Live Demo
-        https://youtubeclone2-eight.vercel.app/
+# Live Demo: https://youtubeclone2-eight.vercel.app/
 # Images 
 ![image](https://github.com/Parshant679/youtubeClone/assets/54788475/3d45f497-fbd2-472c-8f7b-480d42c13308)
 
