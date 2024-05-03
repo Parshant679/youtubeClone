@@ -12,7 +12,7 @@
       step 1 : clone the Repo to local machine
       step 2 : Open Project with ide of your choice.<br>
       step 3 : Open Terminal.<br>
-      step 4 : cd "Client".<br>
+      step 4 : cd "cloneYoutube".<br>
       step 5 : run " npm install " to install the dependencies.<br>
       step 6 : Once the dependencies are installed ,run "npm run dev".<br>
       The Fontend will be Live at Port :5173.<br>
